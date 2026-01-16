@@ -1,0 +1,67 @@
+
+pageextension 80038 "DAF ServicePreviewExt" extends "Service Preview"
+{
+    actions
+    {
+        addlast(Processing)
+        {
+            action("DAF SendServicePreviewEmail")
+            {
+                Caption = 'Send Service Preview via Email';
+                Image = Email;
+                ApplicationArea = All;
+                trigger OnAction()
+                var
+                    ServiceManagRepSelectionRec: Record "Service Manag. Rep. Selection";
+                    ReportId: Integer;
+                    CustomerRec: Record Customer;
+                    TempBlob: Codeunit "Temp Blob";
+                    OutStream: OutStream;
+                    Email: Codeunit "Email";
+                    EmailMessage: Codeunit "Email Message";
+                    RecRef: RecordRef;
+                    Sent: Boolean;
+                    EmailAddress: Text;
+                    ReportParameters: Dictionary of [Text, Text];
+                begin
+                    // Get the report ID from the "Service Manag. Rep. Selection" table filtered by Usage = Service Preview
+                    if ServiceManagRepSelectionRec.Get('Service Preview') then begin
+                        ReportId := ServiceManagRepSelectionRec."Report ID";
+                    end else begin
+                        Message('No report setup found for usage "Service Preview" in "Service Manag. Rep. Selection" table.');
+                        exit;
+                    end;
+
+                    // Get the used Customer (assuming the Customer No. is on the Service Header or similar)
+                    if not CustomerRec.Get(Rec."Customer No.") then begin
+                        Message('Customer not found.');
+                        exit;
+                    end;
+
+                    EmailAddress := CustomerRec."E-Mail";
+
+                    if EmailAddress = '' then begin
+                        Message('Customer does not have a valid e-mail address.');
+                        exit;
+                    end;
+
+                    // Create the PDF in a TempBlob
+                    TempBlob.CreateOutStream(OutStream);
+                    REPORT.Run(ReportId, true, false, OutStream, Rec);
+
+                    // Prepare the email
+                    EmailMessage.CreateMessage('Service Preview', EmailAddress, '', 'Please find attached the Service Preview report.', false);
+                    EmailMessage.AddAttachment(TempBlob, 'ServicePreview.pdf', 'application/pdf');
+
+                    // Send email
+                    Sent := EmailMessage.Send();
+
+                    if Sent then
+                        Message('Service Preview was sent to %1.', EmailAddress)
+                    else
+                        Message('Failed to send e-mail.');
+                end;
+            }
+        }
+    }
+}

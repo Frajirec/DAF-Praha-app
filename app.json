@@ -1,0 +1,44 @@
+{
+  "id": "c1ee47ea-3975-4a5e-afb8-33931244db86",
+  "name": "DAF Praha App",
+  "publisher": "Seyfor, a.s.",
+  "version": "14.721.1.260116",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [
+    {
+      "appId": "de84e698-3b09-458e-8633-c2e4966ff492",
+      "publisher": "LOOC DIGITAL BV.",
+      "name": "Commercial Vehicles",
+      "version": "1.2403.0.0"
+    },
+    {
+      "appId": "2a19e8a0-3695-482c-b327-badebb55ee95",
+      "publisher": "LOOC DIGITAL BV.",
+      "name": "DAF IML",
+      "version": "1.2403.0.0"
+    }
+  ],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "14.0.0.0",
+  "idRanges": [
+    {
+      "from": 1058096,
+      "to": 1058096
+    },
+    {
+      "from": 80000,
+      "to": 80099
+    }
+  ],
+  "showMyCode": true,
+  "target": "Internal",
+  "runtime": "3.2",
+  "features": [ "TranslationFile" ]
+}

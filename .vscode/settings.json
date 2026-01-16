@@ -1,0 +1,11 @@
+{
+    "CRS.ObjectNamePrefix": "DAF ",
+    "CRS.FileNamePattern": "<ObjectNameShort>.<ObjectType>.al",
+    "CRS.FileNamePatternExtensions": "<ObjectNameShort>.<ObjectType>.al",
+    "CRS.OnSaveAlFileAction": "Reorganize",
+    "CRS.RemovePrefixFromFilename": true,
+    "CRS.AlSubFolderName": "src",
+    "xliffSync.baseFile": "DAF IML.en-US.xlf"
+	"todo-tree.highlights.enabled": true,
+    "workbench.iconTheme": "vscode-icons"
+}

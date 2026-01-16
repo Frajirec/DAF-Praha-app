@@ -1,0 +1,24 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+                 {
+            "name": "DynamicsNAV",
+            "request": "launch",
+            "type": "al",
+            "environmentType": "OnPrem",
+            //"server": "http://DAFEHVMVPINCST4/", //PROD
+            "server": "http://DAFEHVMVCINCST1/", //CERT, DEV
+            "port": 7049, //default
+            //"port": 7049, //praha
+            "serverInstance": "Patch_2403", //DEV
+            //"serverInstance": "BC140", //PROD, CERT
+            "authentication": "Windows", 
+            "breakOnError": true,            
+            "enableLongRunningSqlStatements": true,
+            "enableSqlInformationDebugger": true,
+            "tenant": "default"  ,
+            // "bdev-al-xml-doc.checkProcedureDocumentation": false,
+            "schemaUpdateMode": "ForceSync"
+        }
+    ]
+}
