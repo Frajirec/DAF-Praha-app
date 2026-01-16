@@ -7,9 +7,15 @@
 ## change by: 
     FJC 
 ## change:                                                                                                                
+//NOTE: Target Price  
+## details: 
+-	Added Target Price to Service Scheduling Order
+## changed objects:
+[ServiceSchedulingOrderExtPageExt.al]
+## change:                                                                                                                
 //NOTE: VAT Reg. No.  
 ## details: 
--	Added VAT Reg. No. To Parts Purchase Credit Memo
+-	Added VAT Reg. No. to Parts Purchase Credit Memo and Parts Purchase Invoice
 ## changed objects:
 [DPGPartsPurchCrMemoExt.pageextension.al]
 [PartsPurchaseInvExtPageExt.al]
