@@ -7,6 +7,19 @@
 ## change by: 
     FJC 
 ## change:                                                                                                                
+//NOTE: Credit Limit
+## details: 
+-	Added Credit Limit (LCY) to Customer Details Factbox
+## changed objects:
+[CustomerDetailsFactBox.pageextension.al]
+
+## change:                                                                                                                
+//NOTE: Update Document Status 
+## details: 
+-	Change Document Status Code to 'ZARUKA ODESLANA' when updated field TEXT 6 (Warranty Claim No.)
+## changed objects:
+[CodeManagementSubscriber.codeunit.al]
+## change:                                                                                                                
 //NOTE: Target Price  
 ## details: 
 -	Added Target Price to Service Scheduling Order
