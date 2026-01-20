@@ -101,56 +101,44 @@ codeunit 80006 "DAF CodeUnit Functions"
             end;
         end;
     end;
-    //NOTE: End Purchase Receipt VAT Change 
-    /*  procedure MailJobBatchEntryErrors("RequisitionStatusCode": Text; "MakeCode": Text; "PreviousDays": Integer; MailAddress: Text)
-      var
-          CU_SMTPMail: Codeunit "SMTP Mail";
-          CU_FileManagement: CodeUnit "File Management";
-          G_SMTPMailSetup: Record "SMTP Mail Setup";
-          G_CVMAddOnSetup: Record "CVM Add-on Setup";
-          G_CompanyInformation: Record "Company Information";
-          G_TemporaryStatistics: Record "Temporary Statistics";
-          R_JobBatchEntryErrors: Report "Job batch entry errors";
-          MailText: Text;
-          FilePath: Text;
-          FileName: Text;
-      begin
-          IF STRLEN(MailAddress) > 0 THEN begin
-              IF G_CVMAddOnSetup.GET() THEN begin
-                  IF G_SMTPMailSetup.GET() THEN begin
-                      IF G_CompanyInformation.GET() THEN begin
-                          FilePath := G_CVMAddOnSetup."Doc. Path batch PDF invoices";
-                          IF (CopyStr(FilePath, STRLEN(FilePath) - 1, 1) <> '\') THEN begin
-                              //FilePath += '\';
-                          end;
 
-                          FileName := 'Job Entry Errors ' + G_CompanyInformation.Name + '.xlsx';
-                          //FJC  R_JobBatchEntryErrors.SetParameters(RequisitionStatusCode, MakeCode, '', PreviousDays);
-                          R_JobBatchEntryErrors.SaveAsExcel(FilePath + FileName);
+    //NOTE: Send Service Preview by e-mail start
 
-                          if CU_FileManagement.ServerFileExists(FilePath + FileName) then begin
-                              MailText := 'Dear colleague,';
-                              MailText += '<br />';
-                              MailText += '<br />';
-                              MailText += 'Attached you will find report ' + 'Job batch entry errors for company ' + G_CompanyInformation.Name + '.';
-                              MailText += '<br />';
-                              MailText += '<br />';
-                              MailText += 'Best regards,';
-                              MailText += '<br />';
-                              MailText += 'incadea team';
+    procedure PrintServPreviewToPDF(ServHdrP: Record "Service Header"): Text
+    var
+        ServReportSelectionL: Record "Service Manag. Rep. Selection";
+        FileManagement: Codeunit "File Management";
+        FilePath: Text;
+        FileName: Text;
+        TempFileName: Text;
+        GeneratedFiles: Text; // Delimited list of file paths
+    begin
+        ServHdrP.SETRANGE("No.", ServHdrP."No.");
+        ServReportSelectionL.SETRANGE(Usage, ServReportSelectionL.Usage::"Service Preview");
+        ServReportSelectionL.GetReportSelection(ServReportSelectionL, ServHdrP."Make Code", ServHdrP."Location Code");
+        ServReportSelectionL.FINDSET;
 
-                              CU_SMTPMail.CreateMessage('Incadea TEST FFM', 'incadeatestFFM@daftrucks.com', MailAddress, 'Job batch entry errors for ' + G_CompanyInformation.Name + RequisitionStatusCode, MailText, True);
-                              CU_SMTPMail.AddAttachment(FilePath + FileName, FileName);
-                              CU_SMTPMail.Send();
+        FilePath := 'C:\Temp\'; // Or configurable path
 
-                              File.Erase(FilePath + FileName);
-                          end;
-                      end;
-                  end;
-              end;
-          end;
-      end;
-  */
+        GeneratedFiles := '';
+
+        REPEAT
+            FileName := StrSubstNo('ServicePreview_%1_%2.pdf', ServHdrP."No.", Format(Today(), 0, '<Year4><Month,2><Day,2>'));
+            TempFileName := FilePath + FileName;
+
+            REPORT.SaveAsPDF(ServReportSelectionL."Report ID", TempFileName, ServHdrP);
+
+            IF FileManagement.ServerFileExists(TempFileName) THEN BEGIN
+                IF GeneratedFiles <> '' THEN
+                    GeneratedFiles += '|'; // delimiter
+                GeneratedFiles += TempFileName;
+            END;
+        UNTIL ServReportSelectionL.NEXT = 0;
+
+        EXIT(GeneratedFiles);
+    end;
+    //NOTE: Send Service Preview by e-mail stop
+
     procedure GetLabel(LabelID: Text) LabelDescription: Text;
     var
         lbl_DocumentTypeDescriptionInvoice: Label 'Invoice';

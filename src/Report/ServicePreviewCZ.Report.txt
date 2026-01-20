@@ -1,0 +1,1717 @@
+report 80049 "DAF Service Preview CZ"
+//NOTE: Send Service Preview by e-mail
+{
+
+    DefaultLayout = RDLC;
+    RDLCLayout = './ServicePreviewCZ.rdlc';
+
+    Caption = 'Service Preview';
+
+    dataset
+    {
+        dataitem(ServiceHdr; "Service Header")
+        {
+            DataItemTableView = SORTING("Document Type", "No.");
+            column(ServiceHdr_Document_Type; "Document Type")
+            {
+            }
+            column(ServiceHdr_No_; "No.")
+            {
+            }
+            column(PrintTotal; PrintTotalG)
+            {
+                Description = 'PA041187.92447';
+            }
+            dataitem(CopyLoop; Integer)
+            {
+                DataItemTableView = SORTING(Number);
+                dataitem(PageLoop; Integer)
+                {
+                    DataItemTableView = SORTING(Number)
+                                        WHERE(Number = CONST(1));
+                    column(CompanyAddr_1_; CompanyAddrG[1])
+                    {
+                    }
+                    column(CompanyAddr_2_; CompanyAddrG[2])
+                    {
+                    }
+                    column(CompanyAddr_3_; CompanyAddrG[3])
+                    {
+                    }
+                    column(CompanyAddr_5_; CompanyAddrG[5])
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(CompanyAddr_6_; CompanyAddrG[6])
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(CustG__Address_Salutation_Code__; CustG."Address Salutation Code")
+                    {
+                    }
+                    column(Service_Header___Due_Date_; FORMAT(ServiceHdr."Due Date"))
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(ServiceHdr__Pickup_Time_; FORMAT(ServiceHdr."Pickup Time", 0, '<Hours24,2>:<Minutes,2>'))
+                    {
+                        Description = 'PA033336';
+                    }
+                    column(ServiceHdr__Pickup_Date_; FORMAT(ServiceHdr."Pickup Date"))
+                    {
+                        Description = 'PA033336';
+                    }
+                    column(Service_Header___Order_Date_; FORMAT(ServiceHdr."Order Date"))
+                    {
+                    }
+                    column(Service_Header___Time_of_Order_; FORMAT(ServiceHdr."Time of Order", 0, '<Hours24,2>:<Minutes,2>'))
+                    {
+                    }
+                    column(ServiceHdr__No__; ServiceHdr."No.")
+                    {
+                    }
+                    column(CompanyAddr_4_; CompanyAddrG[4])
+                    {
+                    }
+                    column(CompAddr; CompAddrG)
+                    {
+                    }
+                    column(ServiceHdr__Order_Date_; FORMAT(ServiceHdr."Order Date"))
+                    {
+                        Description = 'PA033336';
+                    }
+                    column(Cust__No__; ServiceHdr."Sell-to Customer No.")
+                    {
+                    }
+                    column(CoTelephoneText; CoTelephoneTextG)
+                    {
+                    }
+                    column(CoFaxText; CoFaxTextG)
+                    {
+                    }
+                    column(CoTelephone; CoTelephoneG)
+                    {
+                    }
+                    column(CoFax; CoFaxG)
+                    {
+                    }
+                    column(CoEmail; CoEmailG)
+                    {
+                    }
+                    column(CoEmailText; CoEmailTextG)
+                    {
+                    }
+                    column(OrderCustAddrLineG; OrderCustAddrLineG)
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(ServiceHdr__Time_of_Order_; FORMAT(ServiceHdr."Time of Order", 0, '<Hours24,2>:<Minutes,2>'))
+                    {
+                        Description = 'PA033336';
+                    }
+                    column(PhoneText; PhoneTextG)
+                    {
+                    }
+                    column(Service_Header___Guide_No__; ServiceHdr."Guide No.")
+                    {
+                        Description = 'PA029090';
+                    }
+                    column(ServiceHdr__Order_Limit_; ServiceHdr."Order Limit")
+                    {
+                    }
+                    column(ServiceHdr__Engine_Code_; ServiceHdr."Engine Code")
+                    {
+                        AutoFormatExpression = 'JMD';
+                    }
+                    column(ServiceHdr__License_No__; ServiceHdr."License No.")
+                    {
+                    }
+                    column(Make_Name; MakeG.Name)
+                    {
+                    }
+                    column(ServiceHdr_Model; ServiceHdr.Model)
+                    {
+                    }
+                    column(ServiceHdr_VIN; ServiceHdr.VIN)
+                    {
+                    }
+                    column(ServiceHdr__Labor_Type_; ServiceHdr."Labor Type")
+                    {
+                        AutoFormatExpression = 'JMD';
+                    }
+                    column(ServiceHdr__Initial_Registration_; FORMAT(ServiceHdr."Initial Registration"))
+                    {
+                        Description = 'PA033336';
+                    }
+                    column(Service_Header_Make_Code; ServiceHdr."Make Code")
+                    {
+                    }
+                    column(Service_Header__Model; ServiceHdr.Model)
+                    {
+                    }
+                    column(Service_Header___Model_Code_; ServiceHdr."Model Code")
+                    {
+                        AutoFormatExpression = 'JMD';
+                    }
+                    column(Service_Header__VIN; ServiceHdr.VIN)
+                    {
+                    }
+                    column(Service_Header___Licence_No_; ServiceHdr."License No.")
+                    {
+                    }
+                    column(Service_Header___Initial_Reg_; ServiceHdr."Initial Registration")
+                    {
+                    }
+                    column(Service_Header__Mileage; ServiceHdr.Mileage)
+                    {
+                    }
+                    column(ServiceHdr_Mileage; ServiceHdr.Mileage)
+                    {
+                    }
+                    column(MainNextAppDate_G; FORMAT(MainNextAppDateG))
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(EmissionNextAppDate_G; FORMAT(EmissionNextAppDateG))
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(Service_Header___Appt_Serv_Adv_; ServiceHdr."Service Advisor No.")
+                    {
+                    }
+                    column(Service_Header___Serv_Adv_No_Pickup_; ServiceHdr."Service Advisor No./Pick-Up")
+                    {
+                    }
+                    column(Service_Contract_No; VehicleCustomerG."Contract No.")
+                    {
+                    }
+                    column(Service_Advisor_; ServAdvisorG)
+                    {
+                    }
+                    column(Service_Advisor_Pickup_Name; ServAdvisorPickupNameG)
+                    {
+                    }
+                    column(SalesPurch_Name; SalesPurchG.Name)
+                    {
+                    }
+                    column(Service_Header___PickupServiceAdv_; ServiceHdr."Service Advisor No./Pick-Up")
+                    {
+                    }
+                    column(Service_Header___Appointment_Date_; AppDateTimeG)
+                    {
+                        Description = 'EU.0055501';
+                    }
+                    column(Service_Header___Pickup_Date_; FORMAT(ServiceHdr."Pickup Date"))
+                    {
+                    }
+                    column(Service_Header___Mileage_RunningTime_; FORMAT(ServiceHdr.Mileage) + ' /  ' + FORMAT(ServiceHdr."Running Time"))
+                    {
+                    }
+                    column(ServiceHdr_BookNo; ServiceHdr."Book No.")
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(ServiceHdr__Engine_No__; ServiceHdr."Engine No.")
+                    {
+                        AutoFormatExpression = 'JMD';
+                    }
+                    column(ServAdvisor; ServAdvisorG)
+                    {
+                    }
+                    column(ServiceHdr_Purch_Document_No; ServiceHdr."Purch. Document No.")
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(Service_Header___Order_Limit_; gdeTargetPrice)
+                    {
+                        Description = 'PA028449';
+                    }
+                    column(Service_Header___Fuel_Level_; ServiceHdr."Fuel Level")
+                    {
+                    }
+                    column(ServiceHdr__Model_Code_; ServiceHdr."Model Code")
+                    {
+                        AutoFormatExpression = 'JMD';
+                    }
+                    column(CurrencyText; CurrencyTextG)
+                    {
+                    }
+                    column(CustAddr_1_; CustAddrG[1])
+                    {
+                    }
+                    column(CustAddr_2_; CustAddrG[2])
+                    {
+                    }
+                    column(CustAddr_3_; CustAddrG[3])
+                    {
+                    }
+                    column(CustAddr_4_; CustAddrG[4])
+                    {
+                    }
+                    column(CustAddr_5_; CustAddrG[5])
+                    {
+                    }
+                    column(CustAddr_6_; CustAddrG[6])
+                    {
+                    }
+                    column(CustAddr_7_; CustAddrG[7])
+                    {
+                    }
+                    column(CustAddr_8_; CustAddrG[8])
+                    {
+                    }
+                    column(CopyText; CopyTextG)
+                    {
+                    }
+                    column(Collective_TextShowOutput_ServiceHdr_FIELDCAPTION__VAT_Registration_No_____ServiceHdr__VAT_Registration_No_________; CollectiveG.TextShowOutput(ServiceHdr.FIELDCAPTION("VAT Registration No."), ServiceHdr."VAT Registration No." <> ''))
+                    {
+                    }
+                    column(ServiceHdr__VAT_Registration_No__; ServiceHdr."VAT Registration No.")
+                    {
+                    }
+                    column(Collective_TextShowOutput_CompanyInfo_FIELDCAPTION__VAT_Registration_No_____PrintAddrBlock_; CollectiveG.TextShowOutput(CompanyInfoG.FIELDCAPTION("VAT Registration No."), ReportSelectionG."Print Address Block"))
+                    {
+                        Description = 'EU.0000011';
+                    }
+                    column(Collective_TextShowOutput_CompanyInfo__VAT_Registration_No___PrintAddrBlock_; CollectiveG.TextShowOutput(CompanyInfoG."VAT Registration No.", ReportSelectionG."Print Address Block"))
+                    {
+                        Description = 'EU.0000011';
+                    }
+                    column(OutputNoG; OutputNoG)
+                    {
+                        Description = 'PA033336';
+                    }
+                    column(HidePrintFooterLineG; RDLHideOutput(IsRepSelectionSetupAvailableG))
+                    {
+                    }
+                    column(HideOneColumnFooter; RDLHideOutput(ReportLayoutSetupG."One Column Footer"))
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(ReportLayoutSetupG__Header_Graphic_Right_; ReportLayoutSetupG."Header Graphic Right")
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(ReportLayoutSetupG__Header_Graphic_Left_; ReportLayoutSetupG."Header Graphic Left")
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(ReportLayoutSetupG__Footer_Graphic_Left_; ReportLayoutSetupG."Footer Graphic Left")
+                    {
+                        Description = 'PA038229';
+                    }
+                    column(ReportLayoutSetupG__Footer_Graphic_Right_; ReportLayoutSetupG."Footer Graphic Right")
+                    {
+                        Description = 'PA038229';
+                    }
+                    column(ReportLayoutSetupG__Footer_Graphic_Right_HasValue; RDLHideOutput(ReportLayoutSetupG."Footer Graphic Right".HASVALUE))
+                    {
+                        Description = 'PA038229';
+                    }
+                    column(ReportLayoutSetupG__Footer_Graphic_Left_HasValue; RDLHideOutput(ReportLayoutSetupG."Footer Graphic Left".HASVALUE))
+                    {
+                        Description = 'PA038229';
+                    }
+                    column(ReportLayoutSetupG__Footer_6_6_; ReportLayoutSetupG."Footer 6-6")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_5_4_; ReportLayoutSetupG."Footer 5-4")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_6_4_; ReportLayoutSetupG."Footer 6-4")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_5_5_; ReportLayoutSetupG."Footer 5-5")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_6_5_; ReportLayoutSetupG."Footer 6-5")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_5_6_; ReportLayoutSetupG."Footer 5-6")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_2_3_; ReportLayoutSetupG."Footer 2-3")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_3_3_; ReportLayoutSetupG."Footer 3-3")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_4_3_; ReportLayoutSetupG."Footer 4-3")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_5_3_; ReportLayoutSetupG."Footer 5-3")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_6_3_; ReportLayoutSetupG."Footer 6-3")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_2_4_; ReportLayoutSetupG."Footer 2-4")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_3_4_; ReportLayoutSetupG."Footer 3-4")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_4_4_; ReportLayoutSetupG."Footer 4-4")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_2_5_; ReportLayoutSetupG."Footer 2-5")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_3_5_; ReportLayoutSetupG."Footer 3-5")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_4_5_; ReportLayoutSetupG."Footer 4-5")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_2_6_; ReportLayoutSetupG."Footer 2-6")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_3_6_; ReportLayoutSetupG."Footer 3-6")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_4_6_; ReportLayoutSetupG."Footer 4-6")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_6_2_; ReportLayoutSetupG."Footer 6-2")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_5_2_; ReportLayoutSetupG."Footer 5-2")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_4_2_; ReportLayoutSetupG."Footer 4-2")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_3_2_; ReportLayoutSetupG."Footer 3-2")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_2_2_; ReportLayoutSetupG."Footer 2-2")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_1_2_; ReportLayoutSetupG."Footer 1-2")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_1_3_; ReportLayoutSetupG."Footer 1-3")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_1_4_; ReportLayoutSetupG."Footer 1-4")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_1_5_; ReportLayoutSetupG."Footer 1-5")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_1_6_; ReportLayoutSetupG."Footer 1-6")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_1_1_; ReportLayoutSetupG."Footer 1-1")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_2_1_; ReportLayoutSetupG."Footer 2-1")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_3_1_; ReportLayoutSetupG."Footer 3-1")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_4_1_; ReportLayoutSetupG."Footer 4-1")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_5_1_; ReportLayoutSetupG."Footer 5-1")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Footer_6_1_; ReportLayoutSetupG."Footer 6-1")
+                    {
+                        Description = 'PA033052';
+                    }
+                    column(ReportLayoutSetupG__Auth__Left_Alignment_; ReportLayoutSetupG."Auth. Left Alignment")
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(ReportLayoutSetupG__Auth__Left_Line_1_; ReportLayoutSetupG."Auth. Left Line 1")
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(ReportLayoutSetupG__Auth__Left_Line_2_; ReportLayoutSetupG."Auth. Left Line 2")
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(ReportLayoutSetupG__Auth__Left_Line_3_; ReportLayoutSetupG."Auth. Left Line 3")
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(ReportLayoutSetupG__Auth__Left_Line_4_; ReportLayoutSetupG."Auth. Left Line 4")
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(ReportLayoutSetupG__Auth__Left_Line_5_; ReportLayoutSetupG."Auth. Left Line 5")
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(ReportLayoutSetupG__Header_Graphic_Center_; ReportLayoutSetupG."Header Graphic Center")
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(ReportLayoutSetupG__Swap_Sections_6_7_; ReportLayoutSetupG."Swap Sections 6/7")
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(ReportLayoutSetupG__One_Column_Footer_; ReportLayoutSetupG."One Column Footer")
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(ReportLayoutSetupG__Auth__Center_Line_1_; ReportLayoutSetupG."Auth. Center Line 1")
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(ReportLayoutSetupG__Auth__Center_Line_2_; ReportLayoutSetupG."Auth. Center Line 2")
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(ReportLayoutSetupG__Auth__Center_Line_3_; ReportLayoutSetupG."Auth. Center Line 3")
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(ReportLayoutSetupG__Auth__Center_Line_4_; ReportLayoutSetupG."Auth. Center Line 4")
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(ReportLayoutSetupG__Auth__Center_Line_5_; ReportLayoutSetupG."Auth. Center Line 5")
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(ReportLayoutSetupG__Auth__Right_Line_1_; ReportLayoutSetupG."Auth. Right Line 1")
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(ReportLayoutSetupG__Auth__Right_Line_2_; ReportLayoutSetupG."Auth. Right Line 2")
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(ReportLayoutSetupG__Auth__Right_Line_3_; ReportLayoutSetupG."Auth. Right Line 3")
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(ReportLayoutSetupG__Auth__Right_Line_4_; ReportLayoutSetupG."Auth. Right Line 4")
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(ReportLayoutSetupG__Auth__Right_Line_5_; ReportLayoutSetupG."Auth. Right Line 5")
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(ReportLayoutSetupG__Auth__Center_Alignment_; ReportLayoutSetupG."Auth. Center Alignment")
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(ReportLayoutSetupG__Auth__Right_Alignment_; ReportLayoutSetupG."Auth. Right Alignment")
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(ServiceHdr__Pickup_Date_Caption; ServiceHdr__Pickup_Date_CaptionLbl)
+                    {
+                    }
+                    column(Cust__No__Caption; Cust__No__CaptionLbl)
+                    {
+                    }
+                    column(ServiceHdr__Order_Limit_Caption; ServiceHdr.FIELDCAPTION("Order Limit"))
+                    {
+                        Description = 'EU.0000011';
+                    }
+                    column(ServiceHdr__Engine_Code_Caption; ServiceHdr.FIELDCAPTION("Engine Code"))
+                    {
+                        Description = 'EU.0000011';
+                    }
+                    column(ServiceHdr__License_No__Caption; ServiceHdr.FIELDCAPTION("License No."))
+                    {
+                        Description = 'EU.0000011';
+                    }
+                    column(MakeCaption; ServiceHdr.FIELDCAPTION("Make Code"))
+                    {
+                        Description = 'EU.0000011';
+                    }
+                    column(Model_DescriptionCaption; ServiceHdr.FIELDCAPTION(Model))
+                    {
+                        Description = 'EU.0000011';
+                    }
+                    column(ServiceHdr_VINCaption; ServiceHdr.FIELDCAPTION(VIN))
+                    {
+                        Description = 'EU.0000011';
+                    }
+                    column(ServiceHdr__Labor_Type_Caption; ServiceHdr.FIELDCAPTION("Labor Type"))
+                    {
+                        Description = 'EU.0000011';
+                    }
+                    column(ServiceHdr__Initial_Registration_Caption; ServiceHdr.FIELDCAPTION("Initial Registration"))
+                    {
+                        Description = 'EU.0000011';
+                    }
+                    column(MileageCaption; MileageCaptionLbl)
+                    {
+                    }
+                    column(ServiceHdr__Engine_No__Caption; ServiceHdr.FIELDCAPTION("Engine Code"))
+                    {
+                        Description = 'EU.0000011';
+                    }
+                    column(Service_AdvisorCaption; Service_AdvisorCaptionLbl)
+                    {
+                    }
+                    column(Sales_AdvisorCaption; Sales_AdvisorCaptionLbl)
+                    {
+                    }
+                    column(ServiceHdr__Model_Code_Caption; ServiceHdr.FIELDCAPTION("Model No."))
+                    {
+                        Description = 'EU.0000011';
+                    }
+                    column(ServiceHdr__No__Caption; ServLineG.FIELDCAPTION("Document No."))
+                    {
+                        Description = 'EU.0000011';
+                    }
+                    column(ServiceHdr__Order_Date_Caption; ServiceHdr__Order_Date_CaptionLbl)
+                    {
+                    }
+                    column(Service_PreviewCaption; Service_PreviewCaptionLbl)
+                    {
+                    }
+                    column(Service_Header_No_Caption; ServLineG.FIELDCAPTION("Document No."))
+                    {
+                        Description = 'EU.0000011';
+                    }
+                    column(Service_Header___License_No__Caption; ServiceHdr.FIELDCAPTION("License No."))
+                    {
+                        Description = 'EU.0000011';
+                    }
+                    column(Service_Header__VINCaption; ServiceHdr.FIELDCAPTION(VIN))
+                    {
+                        Description = 'EU.0000011';
+                    }
+                    column(Service_Header___Initial_Registration_Caption; ServiceHdr.FIELDCAPTION("Initial Registration"))
+                    {
+                        Description = 'EU.0000011';
+                    }
+                    column(Service_Header___No__; ServiceHdr."No.")
+                    {
+                    }
+                    column(SalespersonCaption; SalespersonLbl)
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(Guide_No_Caption; ServiceHdr.FIELDCAPTION("Guide No."))
+                    {
+                        Description = 'PA029090,EU.0000011';
+                    }
+                    column(Service_Header___Order_Date_Caption; ServiceHdr.FIELDCAPTION("Document Date"))
+                    {
+                        Description = 'EU.0000011';
+                    }
+                    column(Service_Header___Order_Limit_Caption; ServiceHdr.FIELDCAPTION("Order Limit"))
+                    {
+                        Description = 'PA028449,PA031318,EU.0000011';
+                    }
+                    column(Due_Date_Caption; Due_Date_Lbl)
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(FuelLevelCaption; FuelLevelCaptionLbl)
+                    {
+                    }
+                    column(Emission_Date; Emission_DateLbl)
+                    {
+                    }
+                    column(Inspection_Date; Inspection_DateLbl)
+                    {
+                    }
+                    column(Appt_Service_Advisor; Appt_Service_AdvisorLbl)
+                    {
+                    }
+                    column(Pickup_Service_Advisor; Pickup_Service_AdvisorLbl)
+                    {
+                    }
+                    column(Service_Contract; Service_ContractLbl)
+                    {
+                    }
+                    column(Appointment_Date; Appointment_DateLbl)
+                    {
+                    }
+                    column(Pickup_Date_Time; ServiceHdr.FIELDCAPTION("Pickup Date"))
+                    {
+                        Description = 'EU.0000011';
+                    }
+                    column(PurchaseDocument_Caption; PurchaseDocumentLbl)
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(BookNo_Caption; BookNoLbl)
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(VehicleStatus_Caption; VehicleStatusLbl)
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(RegCertificate_Caption; RegCertificateLbl)
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(Service_Header___Model_Code_Caption; ServiceHdr.FIELDCAPTION("Model Code"))
+                    {
+                        Description = 'EU.0000011';
+                    }
+                    column(Order_Limit_LCY; ServiceHdr.FIELDCAPTION("Order Limit"))
+                    {
+                        Description = 'EU.0000011';
+                    }
+                    column(FORMAT_CurrReport_PAGENO_Caption; FORMAT_CurrReport_PAGENO_CaptionLbl)
+                    {
+                        Description = 'PA028449';
+                    }
+                    column(PageLoop_Number; Number)
+                    {
+                    }
+                    column(VehicleG_Vehicle_Status; VehicleG."Vehicle Status")
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(VehicleG_Registration_Certificate; VehicleG."Registration Certificate")
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(Notes_Lbl_Caption; Notes_Lbl)
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(Signatures_Lbl_Caption; Signatures_Lbl)
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(City_Lbl_Caption; City_Lbl)
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(Date_Lbl_Caption; Date_Lbl)
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    column(Signature_Lbl_Caption; Signature_Lbl)
+                    {
+                        Description = 'PA040669.61682';
+                    }
+                    dataitem("Header Text"; "Sales Document Text")
+                    {
+                        DataItemLink = "Document Type" = FIELD("Document Type"),
+                                       "Document No." = FIELD("No.");
+                        DataItemLinkReference = ServiceHdr;
+                        DataItemTableView = SORTING("Document Type", "Document No.", "Header/Footer", "Line No.")
+                                            WHERE("Document Type" = CONST(Order),
+                                                  "Header/Footer" = CONST(Header));
+                        column(Header_Text_Text; Text)
+                        {
+                        }
+                        column(Header_Text_Document_Type; "Document Type")
+                        {
+                        }
+                        column(Header_Text_Document_No_; "Document No.")
+                        {
+                        }
+                        column(Header_Text_Header_Footer; "Header/Footer")
+                        {
+                        }
+                        column(Header_Text_Line_No_; "Line No.")
+                        {
+                        }
+                    }
+                    dataitem(ServPreviewLine; Integer)
+                    {
+                        DataItemTableView = SORTING(Number);
+                        column(TextBlockHeadlineText; TextBlockG."Headline Text")
+                        {
+                            Description = 'EU.0000011';
+                        }
+                        column(TextBlockContentG; TextBlockContentG)
+                        {
+                            Description = 'EU.0000011';
+                        }
+                        column(TotalNet; TotalNetG)
+                        {
+                            AutoFormatExpression = ServPreviewLineG."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(ServicePreviewLine_Description; ServPreviewLineG.Description)
+                        {
+                        }
+                        column(ServicePreviewLine__No__; ServPreviewLineG."No.")
+                        {
+                        }
+                        column(ServicePreviewLine_Amount; ServPreviewLineG.Amount)
+                        {
+                            AutoFormatExpression = ServPreviewLineG."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(ServicePreviewLine__Bill_to_Customer_No__; ServPreviewLineG."Bill-to Customer No.")
+                        {
+                        }
+                        column(ServicePreviewLine_Quantity; ServPreviewLineG.Quantity)
+                        {
+                            DecimalPlaces = 0 : 2;
+                        }
+                        column(ServicePreviewLine__Unit_of_Measure_; ServPreviewLineG."Unit of Measure")
+                        {
+                        }
+                        column(ServicePreviewLine__Unit_Price_; ServPreviewLineG."Unit Price")
+                        {
+                            AutoFormatExpression = ServPreviewLineG."Currency Code";
+                            AutoFormatType = 2;
+                        }
+                        column(NoProperty; NoPropertyG)
+                        {
+                        }
+                        column(ServicePreviewLine_LineType; (ServPreviewLineG."Line Type" + 0))
+                        {
+                            Description = 'PA033336,EU.0000011';
+                        }
+                        column(ServicePreviewLine_LineDiscount; ServPreviewLineG."Line Discount %")
+                        {
+                        }
+                        column(ServicePreviewLine__Description_2_; ServPreviewLineG."Description 2")
+                        {
+                            Description = 'EU.0000011';
+                        }
+                        column(ServicePreviewLine_Description___________ServicePreviewLine__Description_2_; ServPreviewLineG.Description + CollectiveG.TextShowOutput(' - ', (ServPreviewLineG.Description > '') AND (ServPreviewLineG."Description 2" > '')) + ServPreviewLineG."Description 2")
+                        {
+                            Description = 'EU.0000011';
+                        }
+                        column(ServicePreviewLine__Service_Job_No__; ServPreviewLineG."Service Job No.")
+                        {
+                        }
+                        column(VehApptDescriptionG_; VehApptDescriptionG)
+                        {
+                        }
+                        column(ServicePreviewLine_Amount_Control4; ServPreviewLineG.Amount)
+                        {
+                            AutoFormatExpression = ServPreviewLineG."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(ServicePreviewLine_Description_____ServicePreviewLine__Description_2_; ServPreviewLineG.Description + ' ' + ServPreviewLineG."Description 2")
+                        {
+                            Description = 'EU.0000011';
+                        }
+                        column(VATAmountLine_COUNT_Control1101344703; VATAmountLineG.COUNT)
+                        {
+                            Description = 'PA033336';
+                        }
+                        column(TotalNet_Control11; TotalNetG)
+                        {
+                            AutoFormatExpression = ServPreviewLineG."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(TotalNet_Control24; TotalNetG)
+                        {
+                            AutoFormatExpression = ServPreviewLineG."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(VATAmountLine_VATAmountText; VATAmountLineG.VATAmountText)
+                        {
+                        }
+                        column(ShowCurrency; ShowCurrencyG)
+                        {
+                        }
+                        column(TotalVAT; TotalVATG)
+                        {
+                            AutoFormatExpression = ServPreviewLineG."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(VATAmountLine_COUNT; VATAmountLineG.COUNT)
+                        {
+                            Description = 'PA033336';
+                        }
+                        column(VATText; VATTextG)
+                        {
+                        }
+                        column(SumExchAmount; SumExchAmountG)
+                        {
+                            AutoFormatExpression = ServiceHdr."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(SumExchTax; SumExchTaxG)
+                        {
+                            AutoFormatExpression = ServiceHdr."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(C_INC016; C_INC016)
+                        {
+                        }
+                        column(TotalInclVATText; TotalInclVATTextG)
+                        {
+                        }
+                        column(TotalGross; TotalGrossG)
+                        {
+                            AutoFormatExpression = ServPreviewLineG."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(ExchangePartG; C_INC040)
+                        {
+                        }
+                        column(DiscountCaption; ServPreviewLineG.FIELDCAPTION("Line Discount %"))
+                        {
+                        }
+                        column(AmountCaption; ServPreviewLineG.FIELDCAPTION(Amount))
+                        {
+                            Description = 'EU.0000011';
+                        }
+                        column(DescriptionCaption; ServPreviewLineG.FIELDCAPTION(Description))
+                        {
+                            Description = 'EU.0000011';
+                        }
+                        column(No_Caption; ServPreviewLineG.FIELDCAPTION("No."))
+                        {
+                            Description = 'EU.0000011';
+                        }
+                        column(Bill_to_Customer_No_Caption; ServLineG.FIELDCAPTION("Bill-to Customer No."))
+                        {
+                            Description = 'EU.0000011';
+                        }
+                        column(Unit_PriceCaption; ServPreviewLineG.FIELDCAPTION("Unit Price"))
+                        {
+                            Description = 'EU.0000011';
+                        }
+                        column(UoMCaption; UoMCaptionLbl)
+                        {
+                        }
+                        column(Qty_Caption; Qty_CaptionLbl)
+                        {
+                        }
+                        column(TotalNetCaption; ContinuedCaptionLbl)
+                        {
+                            Description = 'EU.0000011';
+                        }
+                        column(TotalCaption; TotalCaptionLbl)
+                        {
+                        }
+                        column(TotalNet_Control11Caption; TotalNet_Control11CaptionLbl)
+                        {
+                        }
+                        column(ServPreviewLine_Number; Number)
+                        {
+                        }
+
+                        trigger OnAfterGetRecord()
+                        var
+                            ServJobLineL: Record "5025627";
+                        begin
+                            IF Number = 1 THEN
+                                ServPreviewLineG.FIND('-')
+                            ELSE
+                                ServPreviewLineG.NEXT;
+                            NoPropertyG := '';
+                            // Start EU.0000011
+                            TextBlockContentG := '';
+                            // Stop EU.0000011
+                            IF ServPreviewLineG."Line Type" <> ServPreviewLineG."Line Type"::Job THEN
+                                ServPreviewLineG."Service Job No." := 0;
+
+                            IF (ServLineG.GET(ServPreviewLineG."Document Type", ServPreviewLineG."Document No.",
+                               ServPreviewLineG."Document Line No.")) AND
+                               (ServPreviewLineG."Line Type" = ServPreviewLineG."Line Type"::Line)
+                            THEN BEGIN
+                                VATAmountLineG.INIT;
+                                IF ServPreviewLineG.Amount <> 0 THEN BEGIN
+                                    // Start PA033011.5983155
+                                    VATAmountLineG."VAT Identifier" := FORMAT(ServLineG."VAT %");
+                                    VATAmountLineG."Sales Amount" := ServLineG.Amount;
+                                    // Stop PA033011.5983155
+                                    VATAmountLineG."VAT %" := ServLineG."VAT %";
+                                    // Start PA032441
+                                    // Stop PA032441
+                                    VATAmountLineG."Amount Including VAT" := ServPreviewLineG."Amount Including VAT" - ServPreviewLineG.
+                                      "Exch. Parts Tax Amount";
+                                    VATAmountLineG."VAT Base" := ServPreviewLineG."Amount Including VAT" -
+                                      (ServPreviewLineG."Amount Including VAT" - ServPreviewLineG.Amount);
+                                    // Start PA032441
+                                    // Stop PA032441
+
+                                    // Check Exchange Part flag and set it, if required
+                                    // Flag for exchange part = *
+                                    IF ServLineG."VAT Calculation Type" = ServLineG."VAT Calculation Type"::"Exch. Parts Tax" THEN BEGIN
+                                        NoPropertyG := C_INC016;
+                                        // Start PA033336
+                                        ExchangePartG := TRUE;
+                                        // Stop PA033336
+                                    END;
+                                END ELSE
+                                    VATAmountLineG."VAT %" := 0;
+
+                                VATAmountLineG.InsertLine();
+                            END ELSE BEGIN
+                                IF ServPreviewLineG."Automatic Surcharge" THEN BEGIN
+                                    VATAmountLineG.INIT;
+                                    IF ServPreviewLineG.Amount <> 0 THEN BEGIN
+                                        // Start PA032441
+                                        // Stop PA032441
+                                        VATAmountLineG."Amount Including VAT" := ServPreviewLineG."Amount Including VAT";
+                                        VATAmountLineG."VAT Base" := ServPreviewLineG.Amount;
+                                        // Start EU.0110243.110759
+                                        VATAmountLineG."VAT %" := ROUND(ServPreviewLineG."VAT %", GLSetupG."Amount Rounding Precision");
+                                        VATAmountLineG."VAT Identifier" := FORMAT(VATAmountLineG."VAT %");
+                                        // Stop EU.0110243.110759
+                                    END;
+                                    VATAmountLineG.InsertLine();
+                                END;
+
+                            END;
+
+                            IF (ServPreviewLineG."Line Type" = ServPreviewLineG."Line Type"::Line) AND
+                               (NOT ServPreviewLineG."Automatic Surcharge") AND
+                               (ServPreviewLineG.Type <> ServPreviewLineG.Type::" ")
+                            THEN BEGIN
+                                TotalNetG := TotalNetG + ServPreviewLineG.Amount;
+                                TotalGrossG := TotalGrossG + ServPreviewLineG."Amount Including VAT";
+                                TotalVATG := TotalVATG + ((ServPreviewLineG."Amount Including VAT" - ServPreviewLineG.Amount) -
+                                  ServPreviewLineG."Exch. Parts Tax Amount");
+                            END ELSE BEGIN
+                                IF (ServPreviewLineG."Automatic Surcharge") THEN BEGIN
+                                    TotalNetG := TotalNetG + ServPreviewLineG.Amount;
+                                    TotalGrossG := TotalGrossG + ServPreviewLineG."Amount Including VAT";
+                                    TotalVATG := TotalVATG + (ServPreviewLineG."Amount Including VAT" - ServPreviewLineG.Amount);
+                                END;
+                            END;
+                            // Start PA035597
+                            VATTextG := STRSUBSTNO('%1%2', ExchRateG, C_INC022);
+                            // Start EU.0000011
+                            // Stop EU.0000011
+                            // Stop PA035597
+
+                            // Start PA034051
+                            VehApptDescriptionG := '';
+                            IF ServPreviewLineG."Line Type" = ServPreviewLineG."Line Type"::Job THEN
+                                IF ServJobLineL.GET(ServPreviewLineG."Document Type", ServPreviewLineG."Document No.", ServPreviewLineG."Service Job No.") THEN
+                                    IF (ServJobLineL."Veh. Appointment Code" <> '') AND
+                                       (ServJobLineL."Veh. Appointment Status" <> ServJobLineL."Veh. Appointment Status"::New)
+                                    THEN
+                                        VehApptDescriptionG := ServManagementG.CreateApptDescription(ServJobLineL);
+                            // Stop PA034051
+                            // Start EU.0000011
+                            TextBlockG.INIT;
+                            IF ServPreviewLineG.Type = ServPreviewLineG.Type::" " THEN BEGIN
+                                IF ServPreviewLineG."Job Details Text Block" > 0 THEN BEGIN
+                                    IF NOT ReportSelectionG."Print Job Detailed Descript." THEN
+                                        CurrReport.SKIP;
+                                    IF NOT TextBlockG.GET(ServPreviewLineG."Job Details Text Block") THEN
+                                        CurrReport.SKIP;
+                                    TextBlockContentG := TextBlockG.GetTextBlock();
+                                    ServPreviewLineG.Description := '';
+                                    TextBlockG."Headline Text" := '';
+                                    ServPreviewLineG."Description 2" := '          '; // Add a Blank line in the end
+                                    ServPreviewLineG."Service Job No." := 0;
+                                END;
+                            END;
+                            // Stop EU.0000011
+                        end;
+
+                        trigger OnPreDataItem()
+                        begin
+                            // Start PA037032
+                            ServPreviewLineG.SETRANGE("Document Type", DocTypeG);
+                            ServPreviewLineG.SETRANGE("Document No.", DocNoG);
+                            // Stop PA037032
+
+                            VATAmountLineG.DELETEALL;
+                            SETRANGE(Number, 1, ServPreviewLineG.COUNT);
+                            CurrReport.CREATETOTALS(ServPreviewLineG."Amount Including VAT", ServPreviewLineG.Amount);
+                            CurrReport.CREATETOTALS(ServLine2G."Amount Including VAT", ServLine2G.Amount, ServLine2G."Exch. Parts Tax Amount");
+                            // Start PA033336
+                            ExchangePartG := FALSE;
+                            // Stop PA033336
+                        end;
+                    }
+                    dataitem(VATCounter; Integer)
+                    {
+                        DataItemTableView = SORTING(Number);
+                        column(ShowCurrency_Control39; ShowCurrencyG)
+                        {
+                        }
+                        column(TotalNet_Control40; TotalNetG)
+                        {
+                            AutoFormatExpression = ServPreviewLineG."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(VATAmountLine_COUNT_Control1101344702; VATAmountLineG.COUNT)
+                        {
+                            Description = 'PA033336';
+                        }
+                        column(VATAmountLine__VAT_Base_; VATAmountLineG."VAT Base")
+                        {
+                            AutoFormatExpression = ServPreviewLineG."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(VATAmountLine__VAT_Amount_; VATAmountLineG."VAT Amount")
+                        {
+                            AutoFormatExpression = ServPreviewLineG."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(VATAmountLine__VAT___; VATAmountLineG."VAT %")
+                        {
+                        }
+                        column(VATAmountLine__VAT_Base__Control46; VATAmountLineG."VAT Base")
+                        {
+                            AutoFormatExpression = ServPreviewLineG."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(VATAmountLine__Amount_Including_VAT____VATAmountLine__VAT_Base_; VATAmountLineG."Amount Including VAT" - VATAmountLineG."VAT Base")
+                        {
+                            AutoFormatExpression = ServPreviewLineG."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(VATAmountLine__VAT_Base__Control50; VATAmountLineG."VAT Base")
+                        {
+                            AutoFormatExpression = ServPreviewLineG."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(VATAmountLine__VAT_Amount__Control51; VATAmountLineG."VAT Amount")
+                        {
+                            AutoFormatExpression = ServPreviewLineG."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(SumExchTax_Control30; SumExchTaxG)
+                        {
+                            AutoFormatExpression = ServiceHdr."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(SumExchAmount_Control32; SumExchAmountG)
+                        {
+                            AutoFormatExpression = ServiceHdr."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(C_INC016_Control33; C_INC016)
+                        {
+                        }
+                        column(VATText_Control31; VATTextG)
+                        {
+                        }
+                        column(TotalInclVATText_Control52; TotalInclVATTextG)
+                        {
+                        }
+                        column(TotalGross_Control53; TotalGrossG)
+                        {
+                            AutoFormatExpression = ServPreviewLineG."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(TotalCaption_Control41; TotalCaptionLbl)
+                        {
+                            Description = 'EU.0000011';
+                        }
+                        column(ContinuedCaption; ContinuedCaptionLbl)
+                        {
+                        }
+                        column(VAT_onCaption; VAT_onCaptionLbl)
+                        {
+                        }
+                        column(ContinuedCaption_Control49; ContinuedCaptionLbl)
+                        {
+                            Description = 'EU.0000011';
+                        }
+                        column(VATCounter_Number; Number)
+                        {
+                        }
+
+                        trigger OnAfterGetRecord()
+                        begin
+                            VATAmountLineG.GetLine(Number);
+                            VATTextG := C_INC001;
+                            // Start PA035597
+                            VATTextG := STRSUBSTNO('%1%2', ExchRateG, C_INC022);
+                            // Stop PA035597
+                        end;
+
+                        trigger OnPreDataItem()
+                        begin
+                            IF VATAmountLineG.COUNT <= 1 THEN
+                                CurrReport.BREAK;
+                            SETRANGE(Number, 1, VATAmountLineG.COUNT);
+                            CurrReport.CREATETOTALS(VATAmountLineG."VAT Base", VATAmountLineG."VAT Amount");
+                        end;
+                    }
+                    dataitem("Footer Text"; "Sales Document Text")
+                    {
+                        DataItemLink = "Document Type" = FIELD("Document Type"),
+                                       "Document No." = FIELD("No.");
+                        DataItemLinkReference = ServiceHdr;
+                        DataItemTableView = SORTING("Document Type", "Document No.", "Header/Footer", "Line No.")
+                                            WHERE("Document Type" = CONST(Order),
+                                                  "Header/Footer" = CONST(Footer));
+                        column(Footer_Text_Text; Text)
+                        {
+                        }
+                        column(Footer_Text_Document_Type; "Document Type")
+                        {
+                        }
+                        column(Footer_Text_Document_No_; "Document No.")
+                        {
+                        }
+                        column(Footer_Text_Header_Footer; "Header/Footer")
+                        {
+                        }
+                        column(Footer_Text_Line_No_; "Line No.")
+                        {
+                        }
+                    }
+                }
+
+                trigger OnAfterGetRecord()
+                begin
+                    // Start PA035597
+                    // Stop PA035597
+                    IF Number > 1 THEN BEGIN
+                        CopyTextG := C_INC029;
+                        // Start PA035597
+                        OutputNoG := OutputNoG + 1;
+                        // Stop PA035597
+
+                    END;
+                    // Start PA035597
+                    // Stop PA035597
+
+                    TotalNetG := 0;
+                    TotalGrossG := 0;
+                    TotalVATG := 0;
+                end;
+
+                trigger OnPreDataItem()
+                begin
+                    NoOfLoopsG := ABS(NoOfCopiesG) + 1;
+                    CopyTextG := '';
+                    SETRANGE(Number, 1, NoOfLoopsG);
+                    // Start PA035597
+                    OutputNoG := 1;
+                    // Stop PA035597
+                end;
+            }
+
+            trigger OnAfterGetRecord()
+            var
+                ServJobLineL: Record "5025627";
+                ServLineL: Record "5025625";
+                ServPrevLineL: Record "5025630";
+            begin
+                //++DAFCZE01.00
+                grefRecRef.GET(ServiceHdr.RECORDID);
+                gfiefFieldRef := grefRecRef.FIELD(5208951);
+                gdeTargetPrice := gfiefFieldRef.VALUE;
+                //--DAFCZE01.00
+
+                // Start PA038228
+                IsRepSelectionSetupAvailableG := ReportSelectionG.GetFooterDetails(ReportLayoutSetupG, "Make Code", "Location Code",
+                  REPORT::"Service Preview");
+                CLEAR(ReportLayoutSetupG);
+                IF IsRepSelectionSetupAvailableG THEN
+                    ReportLayoutSetupG.GetReportLayout(ReportLayoutSetupG, "Make Code", "Location Code");
+
+                CLEAR(MainNextAppDateG);
+                CLEAR(EmissionNextAppDateG);
+                MainNextAppDateG := GetNextApptDate(1, ServiceHdr."Document Date");
+                EmissionNextAppDateG := GetNextApptDate(2, ServiceHdr."Document Date");
+
+                CLEAR(VehicleCustomerG);
+                VehicleCustomerG.SETRANGE(VIN, ServiceHdr.VIN);
+                VehicleCustomerG.SETRANGE(Type, VehicleCustomerG.Type::"Service Contract");
+                VehicleCustomerG.SETFILTER("Beginning of Contract", '<=%1', ServiceHdr."Order Date");
+                VehicleCustomerG.SETFILTER("Expiration of Contract", '>=%1', ServiceHdr."Order Date");
+                IF VehicleCustomerG.FINDFIRST THEN
+                  ;
+                // Stop PA038228
+
+
+                // Start PA035804.26403
+                DocTypeG := ServiceHdr."Document Type";
+                DocNoG := ServiceHdr."No.";
+                // Stop PA035804.26403
+                IF "Sell-to Customer No." <> '' THEN
+                    CustG.GET("Sell-to Customer No.")
+                ELSE
+                    CLEAR(CustG);
+                CurrReport.LANGUAGE := CustG.PrintDocInCustLanguage();
+                IF NOT LocationG.GET("Location Code") THEN
+                    CLEAR(LocationG);
+                IntCustG := CompanyInfoG."Internal Customer";
+                IF LocationG."Internal Customer" <> '' THEN
+                    IntCustG := LocationG."Internal Customer";
+                IF (LocationG."Ship-to Address Code" <> '') AND
+                   (OwnDelivAddressG.GET(IntCustG, LocationG."Ship-to Address Code"))
+                THEN BEGIN
+                    FormatAddrG.OwnCustomerAddress(CompanyAddrG, OwnDelivAddressG);
+                    FormatAddrG.OwnAddressLetterWindow(AddrWindowG, OwnDelivAddressG);
+                    CoTelephoneG := OwnDelivAddressG."Phone No.";
+                    CoFaxG := OwnDelivAddressG."Fax No.";
+                    CoEmailG := OwnDelivAddressG."E-Mail";
+                END ELSE BEGIN
+                    FormatAddrG.Company(CompanyAddrG, CompanyInfoG);
+                    FormatAddrG.CompanyLetterAddressWindow(AddrWindowG, CompanyInfoG);
+                    CoTelephoneG := CompanyInfoG."Phone No.";
+                    CoFaxG := CompanyInfoG."Fax No.";
+                    CoEmailG := CompanyInfoG."E-Mail";
+                END;
+                // Start EU.0000011
+                IF ReportSelectionG."Print Sent-From Line" THEN
+                    CompAddrG := FormatAddrG.GetWindowAddress(C_INC005);
+
+                IF ReportSelectionG."Print Address Block" THEN BEGIN
+                    // Stop EU.0000011
+                    CoTelephoneTextG := C_INC002;
+                    CoFaxTextG := C_INC003;
+                    CoEmailTextG := C_INC004;
+                END ELSE BEGIN
+                    CLEAR(CompanyAddrG);
+                    CoTelephoneG := '';
+                    CoFaxG := '';
+                    CoEmailG := '';
+                END;
+                // Start PA040669
+                IF ServiceHdr."Sell-to Customer No." <> ServiceHdr."Bill-to Customer No." THEN BEGIN
+                    FormatServAddrG.ServHeaderBillTo(OrderCustAddrG, ServiceHdr);
+                    // Start EU.0036209
+                    OrderCustAddrLineG := COPYSTR(C_INC008 + FormatServAddrG.GetWindowAddress(C_INC005), 1, MAXSTRLEN(OrderCustAddrLineG));
+                    // Stop EU.0036209
+                END ELSE
+                    OrderCustAddrLineG := '';
+                IF VehicleG.GET(ServiceHdr.VIN) THEN
+                  ;
+                // Stop PA040669
+                IF LocationG.GET("Location Code") AND (LocationG."Bank Code" <> '') AND
+                   OwnBanksG.GET(IntCustG, LocationG."Bank Code")
+                THEN
+                    BankTextG := OwnBanksG.Name + C_INC006 + OwnBanksG."Bank Branch No." + C_INC007 + OwnBanksG."Bank Account No."
+                ELSE
+                    BankTextG := CompanyInfoG."Bank Name" + C_INC006 + CompanyInfoG."Bank Branch No." + C_INC007 + CompanyInfoG."Bank Account No.";
+
+                IF "Your Reference" = '' THEN
+                    ReferenceTextG := ''
+                ELSE
+                    ReferenceTextG := FIELDCAPTION("Your Reference");
+
+                IF "Currency Code" = '' THEN BEGIN
+                    GLSetupG.TESTFIELD("LCY Code");
+                    ShowCurrencyG := GLSetupG."LCY Code";
+                END ELSE
+                    ShowCurrencyG := "Currency Code";
+                TotalInclVATTextG := STRSUBSTNO(C_INC031, ShowCurrencyG);
+
+                VehicleFormatAddrG.ServHeaderSellTo(CustAddrG, ServiceHdr);
+
+                IF "Make Code" <> '' THEN BEGIN
+                    MakeG.GET("Make Code");
+                END ELSE
+                    MakeG.INIT;
+
+                PhoneTextG := '';
+                IF ("Sell-to Home Phone No." <> '') OR
+                   ("Sell-to Home Mobile Phone No." <> '') OR
+                   ("Sell-to Phone No." <> '') OR
+                   ("Sell-to Mobile Phone No." <> '')
+                THEN BEGIN
+                    PhoneTextG := C_INC010;
+                    IF "Sell-to Home Phone No." <> '' THEN
+                        PhoneTextG := PhoneTextG + ' ' + C_INC011 + ' ' + "Sell-to Home Phone No.";
+                    IF "Sell-to Home Mobile Phone No." <> '' THEN BEGIN
+                        IF "Sell-to Home Phone No." <> '' THEN
+                            PhoneTextG := PhoneTextG + C_INC005 + ' ' + C_INC012
+                        ELSE
+                            PhoneTextG := PhoneTextG + '  ' + C_INC012;
+                        PhoneTextG := PhoneTextG + ' ' + "Sell-to Home Mobile Phone No.";
+                    END;
+                    IF "Sell-to Phone No." <> '' THEN BEGIN
+                        IF "Sell-to Home Mobile Phone No." <> '' THEN
+                            PhoneTextG := PhoneTextG + C_INC005 + ' ' + C_INC013
+                        ELSE
+                            PhoneTextG := PhoneTextG + '  ' + C_INC013;
+                        PhoneTextG := PhoneTextG + ' ' + "Sell-to Phone No.";
+                    END;
+                    IF "Sell-to Mobile Phone No." <> '' THEN BEGIN
+                        IF "Sell-to Phone No." <> '' THEN
+                            PhoneTextG := PhoneTextG + C_INC005 + ' ' + C_INC014
+                        ELSE
+                            PhoneTextG := PhoneTextG + '  ' + C_INC014;
+                        PhoneTextG := PhoneTextG + ' ' + "Sell-to Mobile Phone No.";
+                    END;
+                END;
+
+                // Start EU.0077177
+                ServiceHdr.CALCFIELDS("Service Advisor Name/Appoint.");
+                ServiceHdr.CALCFIELDS("Service Advisor Name/Pickup");
+                ServAdvisorG := ServiceHdr."Service Advisor Name/Appoint.";
+                ServAdvisorPickupNameG := ServiceHdr."Service Advisor Name/Pickup";
+                // Stop EU.0077177
+
+                IF NOT SalesPurchG.GET("Salesperson Code") THEN
+                    SalesPurchG.Name := "Salesperson Code";
+
+                // Start PA041187.92447
+                PrintTotalG := TRUE;
+                ServJobLineL.RESET;
+                ServJobLineL.SETRANGE("Document Type", "Document Type");
+                ServJobLineL.SETRANGE("Document No.", "No.");
+                ServJobLineL.SETRANGE("Includes Fixed Price", TRUE);
+                IF ServJobLineL.FINDSET THEN
+                    REPEAT
+                        IF PrintTotalG THEN BEGIN
+                            ServLineL.RESET;
+                            ServLineL.SETCURRENTKEY("Document Type", "Document No.", "Service Job No.");
+                            ServLineL.SETRANGE("Document Type", ServJobLineL."Document Type");
+                            ServLineL.SETRANGE("Document No.", ServJobLineL."Document No.");
+                            ServLineL.SETRANGE("Service Job No.", ServJobLineL."Line No.");
+                            ServPrevLineL.RESET;
+                            ServPrevLineL.SETRANGE("Document Type", ServJobLineL."Document Type");
+                            ServPrevLineL.SETRANGE("Document No.", ServJobLineL."Document No.");
+                            ServPrevLineL.SETRANGE("Service Job No.", ServJobLineL."Line No.");
+                            ServPrevLineL.SETRANGE("Control Type", ServPrevLineL."Control Type"::Job);
+                            ServPrevLineL.SETRANGE("Line Type", ServPrevLineL."Line Type"::Sum);
+                            IF ServLineL.ISEMPTY AND NOT ServPrevLineL.ISEMPTY THEN
+                                PrintTotalG := FALSE;
+                        END;
+                    UNTIL ServJobLineL.NEXT = 0;
+                // Stop PA041187.92447
+
+                // Start EU.0055501
+                // Start EU.0090163
+                AppDateTimeG := FORMAT(ServiceHdr."Appointment Date") + ' / ' + FORMAT(ServiceHdr."Appointment Time")
+                // Stop EU.0090163
+                // Stop EU.0055501
+            end;
+
+            trigger OnPreDataItem()
+            begin
+                CompanyInfoG.GET;
+                ServSetupG.GET();
+                // Start PA035804.26403
+                // Stop PA035804.26403
+            end;
+        }
+    }
+
+    requestpage
+    {
+        Caption = 'Service Preview';
+
+        layout
+        {
+            area(content)
+            {
+                group("Výbavy")
+                {
+                    Caption = 'Options';
+                    field("No. of Copies"; NoOfCopiesG)
+                    {
+                        Caption = 'No. of Copies';
+                        Description = 'EU.0000011';
+                    }
+                    field("Print Sent-From Line"; ReportSelectionG."Print Sent-From Line")
+                    {
+                        CaptionClass = ReportSelectionG.FIELDCAPTION("Print Sent-From Line");
+                        Description = 'EU.0000011';
+                    }
+                    field("Print Address Block"; ReportSelectionG."Print Address Block")
+                    {
+                        CaptionClass = ReportSelectionG.FIELDCAPTION("Print Address Block");
+                        Description = 'EU.0000011';
+                    }
+                    field("Print Job Detailed Descript."; ReportSelectionG."Print Job Detailed Descript.")
+                    {
+                        CaptionClass = ReportSelectionG.FIELDCAPTION("Print Job Detailed Descript.");
+                        Description = 'EU.0000011';
+                    }
+                }
+            }
+        }
+
+        actions
+        {
+        }
+
+        trigger OnOpenPage()
+        begin
+            // Start EU.0000011
+            GetReportSelection();
+            // Stop EU.0000011
+        end;
+    }
+
+    labels
+    {
+        ofLbl = 'of';
+    }
+
+    trigger OnInitReport()
+    var
+        RoundingFactorIndexL: Integer;
+        DocTypeIndexL: Integer;
+    begin
+        // Start EU.0000011
+        GLSetupG.GET;
+        GetReportSelection();
+        // Stop EU.0000011
+    end;
+
+    trigger OnPostReport()
+    var
+        ServPreviewLineL: Record "5025630";
+    begin
+        // Start PA032651
+        ServPreviewLineL.SETRANGE("Document Type", DocTypeG);
+        ServPreviewLineL.SETRANGE("Document No.", DocNoG);
+        IF NOT ServPreviewLineL.ISEMPTY THEN
+            ServPreviewLineL.DELETEALL;
+        // Start PA035804.26403
+        // Start PA035597
+        // Stop PA035597
+        // Stop PA035804.26403
+        // Stop PA032651
+    end;
+
+    var
+        C_INC001: Label '% VAT of';
+        C_INC002: Label 'Phone No.';
+        C_INC003: Label 'Fax No.';
+        C_INC004: Label 'E-Mail';
+        C_INC005: Label ', ';
+        C_INC006: Label ' - BBN:';
+        C_INC007: Label ' - Acc.-No..:';
+        C_INC008: Label 'Order Customer:';
+        C_INC010: Label 'Phone:';
+        C_INC011: Label 'Private';
+        C_INC012: Label 'Mobile';
+        C_INC013: Label 'Bus.';
+        C_INC014: Label 'Mobile';
+        C_INC016: Label '*';
+        C_INC022: Label '% Exch. Tax from';
+        C_INC029: Label 'Copy of';
+        C_INC031: Label 'Total %1 incl. VAT';
+        C_INC040: Label '* = Exchange Part';
+        GLSetupG: Record "98";
+        ServSetupG: Record "5025600";
+        ReportLayoutSetupG: Record "5206831";
+        ReportSelectionG: Record "5045389";
+        CustG: Record "18";
+        PrinterSelectionG: Record "78";
+        OwnBanksG: Record "287";
+        OwnDelivAddressG: Record "222";
+        CompanyInfoG: Record "79";
+        LocationG: Record "14";
+        MakeG: Record "12";
+        EmployeeG: Record "5200";
+        VATAmountLineG: Record "290" temporary;
+        SalesPurchG: Record "13";
+        ServPreviewLineG: Record "5025630";
+        ServLineG: Record "5025625";
+        ServLine2G: Record "5025625";
+        VehicleCustomerG: Record "5025469";
+        VehicleG: Record "5025400";
+        TextBlockG: Record "5045372";
+        FormatAddrG: Codeunit "365";
+        VehicleFormatAddrG: Codeunit "5028652";
+        CollectiveG: Codeunit "5028657";
+        ServManagementG: Codeunit "5025614";
+        UserSessionG: Codeunit "5028665";
+        FormatServAddrG: Codeunit "5028652";
+        TextBlockContentG: Text;
+        ShowCurrencyG: Text[30];
+        BankTextG: Text[250];
+        DocNoFilterG: Text[250];
+        CustAddrG: array[8] of Text[50];
+        AddrWindowG: array[8] of Text[50];
+        CompanyAddrG: array[8] of Text[50];
+        CoEmailG: Text[80];
+        CoEmailTextG: Text[80];
+        CoFaxG: Text[30];
+        CoFaxTextG: Text[30];
+        CoTelephoneG: Text[30];
+        CoTelephoneTextG: Text[30];
+        CopyTextG: Text[30];
+        CompAddrG: Text[250];
+        VATTextG: Text[50];
+        NoPropertyG: Text[10];
+        ReferenceTextG: Text[30];
+        ServAdvisorG: Text[50];
+        ServAdvisorPickupNameG: Text[50];
+        PhoneTextG: Text[150];
+        TotalInclVATTextG: Text[50];
+        CurrencyTextG: Text[10];
+        [InDataSet]
+        VehApptDescriptionG: Text[50];
+        OrderCustAddrG: array[8] of Text[100];
+        OrderCustAddrLineG: Text[100];
+        AppDateTimeG: Text;
+        DocNoG: Code[20];
+        IntCustG: Code[20];
+        RoundingFactorG: Option "None","1","1000","1000000";
+        DocTypeG: Option Quote,"Order";
+        NoOfCopiesG: Integer;
+        NoOfLoopsG: Integer;
+        [InDataSet]
+        OutputNoG: Integer;
+        ExchRateG: Decimal;
+        TotalGrossG: Decimal;
+        TotalVATG: Decimal;
+        TotalNetG: Decimal;
+        SumExchAmountG: Decimal;
+        SumExchTaxG: Decimal;
+        ExchangePartG: Boolean;
+        IsRepSelectionSetupAvailableG: Boolean;
+        PrintTotalG: Boolean;
+        ServiceHdr__Pickup_Date_CaptionLbl: Label 'Pickup Appt.';
+        FORMAT_CurrReport_PAGENO_CaptionLbl: Label 'Page';
+        Cust__No__CaptionLbl: Label 'Customer';
+        MileageCaptionLbl: Label 'Mileage / Running Time';
+        Service_AdvisorCaptionLbl: Label 'Service Advisor';
+        Sales_AdvisorCaptionLbl: Label 'Sales Advisor';
+        ServiceHdr__Order_Date_CaptionLbl: Label 'ReceivingDate';
+        Service_PreviewCaptionLbl: Label 'Service Preview';
+        UoMCaptionLbl: Label 'UoM';
+        Qty_CaptionLbl: Label 'Qty.';
+        TotalCaption_Control11Lbl: Label 'Total';
+        ContinuedCaptionLbl: Label 'Continued';
+        VAT_onCaptionLbl: Label '% VAT of';
+        FuelLevelCaptionLbl: Label 'Fuel Level';
+        Inspection_DateLbl: Label 'Inspection Date';
+        Emission_DateLbl: Label 'Emission Date';
+        Appt_Service_AdvisorLbl: Label 'Appt. Service Advisor';
+        Pickup_Service_AdvisorLbl: Label 'Pickup Service Advisor';
+        Service_ContractLbl: Label 'Service Contract';
+        Appointment_DateLbl: Label 'Appointment Date';
+        TotalCaptionLbl: Label 'Total';
+        TotalNet_Control11CaptionLbl: Label 'Sum carried forward';
+        MainNextAppDateG: Date;
+        EmissionNextAppDateG: Date;
+        Due_Date_Lbl: Label 'Due Date :';
+        SalespersonLbl: Label 'Salesperson :';
+        PurchaseDocumentLbl: Label 'Purchase Document';
+        BookNoLbl: Label 'Book No.';
+        RegCertificateLbl: Label 'Reg. Certificate';
+        VehicleStatusLbl: Label 'Vehicle Status';
+        Notes_Lbl: Label 'Notes';
+        Signatures_Lbl: Label 'Signatures';
+        City_Lbl: Label 'City';
+        Date_Lbl: Label 'Date';
+        Signature_Lbl: Label 'Signature';
+        grefRecRef: RecordRef;
+        gfiefFieldRef: FieldRef;
+        gdeTargetPrice: Decimal;
+
+    [Scope('Internal')]
+    procedure GetNextApptDate(IndexP: Integer; DocumentDateP: Date) NextApptDateR: Date
+    var
+        VehApptL: Record "5025450";
+        VehApptTempL: Record "5025450" temporary;
+        VehApptTypeL: Record "5025449";
+    begin
+        // @ GetNextApptDate - Return the Next Appointment Date for Inspection Type Main or Emission Inspection.
+        // @ param IndexP - Integer - Used to select Inspection Type.
+        // @ param DocumentDateP - Date - Used to filter Next Appointment Dates closed to Document Date.
+        // @ retval NextApptDateR - Date - Return Next Appointment Date
+
+        // Start PA038228
+        VehApptL.SETRANGE(VIN, ServiceHdr.VIN);
+        VehApptL.SETFILTER(Status, '%1|%2|%3', VehApptL.Status::Recurring,
+          VehApptL.Status::New,
+          VehApptL.Status::Prepared);
+        IF VehApptL.FINDSET THEN
+            REPEAT
+                VehApptTypeL.RESET;
+                VehApptTypeL.SETRANGE(Code, VehApptL."Appointment Type");
+                IF IndexP = 1 THEN
+                    VehApptTypeL.SETRANGE("Inspection Type", VehApptTypeL."Inspection Type"::"Main Inspection")
+                ELSE
+                    VehApptTypeL.SETRANGE("Inspection Type", VehApptTypeL."Inspection Type"::"Emission Inspection");
+                IF VehApptTypeL.FINDFIRST THEN BEGIN
+                    VehApptTempL.INIT;
+                    VehApptTempL.COPY(VehApptL);
+                    VehApptTempL.INSERT;
+                END;
+            UNTIL VehApptL.NEXT = 0;
+
+        IF NOT VehApptTempL.ISEMPTY THEN BEGIN
+            VehApptTempL.RESET;
+            VehApptTempL.SETCURRENTKEY(VIN, "Next Appointment Date");
+            VehApptTempL.SETFILTER("Next Appointment Date", '>=%1', DocumentDateP);
+            IF VehApptTempL.FINDFIRST THEN
+                NextApptDateR := VehApptTempL."Next Appointment Date";
+        END;
+        // Stop PA038228
+    end;
+
+    [Scope('Internal')]
+    procedure RDLHideOutput(ShowOutputP: Boolean): Boolean
+    begin
+        // @ Use it to transfer to RDL the ShowOutput statement as Hidden Visibility
+        // @ param ShowOutputP - Boolean
+        // @ retval - Boolean
+        // Start PA038228
+        EXIT(NOT ShowOutputP);
+        // Stop PA038228
+    end;
+
+    [Scope('Internal')]
+    procedure RDLHideOutputAsInteger(DummyIntegerP: Integer): Boolean
+    begin
+        // @ Use this function to transfer to RDL the ShowOutput statement as Hidden Visibility with a dummy integer
+        // @ Send different numbers to create new dataset fields
+        // @ param DummyIntegerP - Integer
+        // @ retval - Boolean
+        // Start PA038228
+        EXIT(FALSE);
+        // Stop PA038228
+    end;
+
+    [Scope('Internal')]
+    procedure GetReportSelection()
+    var
+        RecordRefL: RecordRef;
+        ReportIDTextL: Text;
+        ReportIDL: Integer;
+    begin
+        // @ This function sets request page filters from Report Selection setup through User Session Unit.
+        // Start PA039225.51457
+        // Start EU.0000011
+        ReportSelectionG.INIT;
+        UserSessionG.GetRecordRef(RecordRefL);
+        IF RecordRefL.NUMBER > 0 THEN
+            RecordRefL.SETTABLE(ReportSelectionG);
+        // Stop EU.0000011
+        ReportIDTextL := CurrReport.OBJECTID(FALSE);
+        WHILE STRPOS(ReportIDTextL, ' ') > 0 DO
+            ReportIDTextL := DELSTR(ReportIDTextL, 1, STRPOS(ReportIDTextL, ' '));
+        EVALUATE(ReportIDL, ReportIDTextL);
+        NoOfCopiesG := PrinterSelectionG.GetNoOfCopies(ReportIDL);
+        // Stop PA039225.51457
+    end;
+}
+

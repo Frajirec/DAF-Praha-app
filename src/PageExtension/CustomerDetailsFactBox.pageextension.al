@@ -1,14 +1,12 @@
-pageextension 80039 "DAF Customer Details FactBox" extends "Customer Details FactBox"
+pageextension 80040 "DAF Customer Details FactBox" extends "Customer Details FactBox"
 {
     //NOTE: Credit Limit 
+
     layout
     {
-        addafter("Contact")
+        modify("Credit Limit (LCY)")
         {
-            field("DPG Credit Limit (LCY)"; "Credit Limit (LCY)")
-            {
-            }
-
+            Visible = true;
         }
     }
 }

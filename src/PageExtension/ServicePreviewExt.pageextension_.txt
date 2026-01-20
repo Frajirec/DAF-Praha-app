@@ -1,5 +1,6 @@
 
 pageextension 80041 "DAF ServicePreviewExt" extends "Service Preview"
+//NOTE: Send Service Preview by e-mail
 {
     actions
     {
@@ -12,20 +13,20 @@ pageextension 80041 "DAF ServicePreviewExt" extends "Service Preview"
                 Image = Email;
                 trigger OnAction()
                 var
-                    ServiceHeaderRec: Record "Service Header";
+                    ServicePreviewLineRec: Record "Service Preview Line";
+                    ServiceHdrRec: Record "Service Header";
                     Customer: Record Customer;
                 begin
-                    // Get current record from page (Service Preview Line)
-                    // Rec is the current Service Preview Line record from the page extension context
+                    ServicePreviewLineRec := Rec;
 
-                    // Assuming ServiceHeaderRec primary key is Rec."Document No."
-                    if not ServiceHeaderRec.Get(Rec."Document No.") then begin
+                    // Get Service Header from the line record
+                    if not ServiceHdrRec.Get(ServicePreviewLineRec."Document Type", ServicePreviewLineRec."Document No.") then begin
                         Message('Service Header record not found.');
                         exit;
                     end;
 
                     // Validate Customer Email
-                    if not Customer.Get(ServiceHeaderRec."Bill-To Customer No.") then begin
+                    if not Customer.Get(ServiceHdrRec."Bill-to Customer No.") then begin
                         Message('Customer not found.');
                         exit;
                     end;
@@ -34,14 +35,14 @@ pageextension 80041 "DAF ServicePreviewExt" extends "Service Preview"
                         exit;
                     end;
 
-                    // Call the email sending procedure
-                    SendServiceHeaderEmail(ServiceHeaderRec, Customer."E-Mail");
+                    // Call email sending procedure passing Service Header record
+                    SendServicePreviewEmail(ServiceHdrRec, Customer."E-Mail");
                 end;
             }
         }
     }
 
-    local procedure SendServiceHeaderEmail(ServiceHeaderRec: Record "Service Header"; MailAddress: Text)
+    local procedure SendServicePreviewEmail(ServiceHdrRec: Record 5025624; MailAddress: Text)
     var
         CU_SMTPMail: Codeunit "SMTP Mail";
         CU_FileManagement: Codeunit "File Management";
@@ -75,32 +76,23 @@ pageextension 80041 "DAF ServicePreviewExt" extends "Service Preview"
         end;
         ReportId := ReportSelection."Report ID";
 
-        // Get file path from setup - please adjust field as needed
+        // Get file path from setup
         FilePath := G_CVMAddOnSetup."Doc. Path batch PDF invoices";
         if (CopyStr(FilePath, StrLen(FilePath), 1) <> '\') then
             FilePath += '\';
 
-        // Compose file name
-        FileName := StrSubstNo('ServicePreview_%1_%2.pdf', ServiceHeaderRec."No.", Format(Today(), 0, '<Year4><Month,2><Day,2>'));
+        // Compose file name using Service Header No.
+        FileName := StrSubstNo('ServicePreview_%1_%2.pdf', ServiceHdrRec."No.", Format(Today(), 0, '<Year4><Month,2><Day,2>'));
 
         TempFileName := FilePath + FileName;
 
-        // Save report as PDF file
-        Report.SaveAsPDF(ReportId, TempFileName, ServiceHeaderRec);
+        // Save report as PDF passing Service Header record
+        Report.SaveAsPDF(ReportId, TempFileName, ServiceHdrRec);
 
-        // Check file and send mail
         if CU_FileManagement.ServerFileExists(TempFileName) then begin
-            MailText := 'Dear customer,';
-            MailText += '<br />';
-            MailText += '<br />';
-            MailText += 'Please find attached the Service Preview report for your reference.';
-            MailText += '<br />';
-            MailText += '<br />';
-            MailText += 'Best regards,';
-            MailText += '<br />';
-            MailText += G_CompanyInformation.Name;
+            MailText := 'Dear customer,<br /><br />Please find attached the Service Preview report for your reference.<br /><br />Best regards,<br />' + G_CompanyInformation.Name;
 
-            CU_SMTPMail.CreateMessage(G_CompanyInformation.Name, '', MailAddress, 'Service Preview Report - ' + ServiceHeaderRec."No.", MailText, true);
+            CU_SMTPMail.CreateMessage(G_CompanyInformation.Name, '', MailAddress, 'Service Preview Report - ' + ServiceHdrRec."No.", MailText, true);
             CU_SMTPMail.AddAttachment(TempFileName, FileName);
             CU_SMTPMail.Send();
 

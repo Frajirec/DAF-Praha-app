@@ -19683,6 +19683,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension DPG Vehicle Sales Order Ext - Control DPG Truck Sales - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 910701018 - Action 1885403371 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1678420041">
+          <source>Send Service Preview Email</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ServicePreviewExt - Action SendServicePreviewEmailAction - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 4272185714 - Field 1119517131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 785108357">
           <source>Customer VAT Registration No.</source>
           <note from="Developer" annotates="general" priority="2"></note>

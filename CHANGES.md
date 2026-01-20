@@ -6,12 +6,20 @@
     16.1.2026
 ## change by: 
     FJC 
+
+## change:
+//NOTE: Send Service Preview by e-mail
+## details: 
+-	Send Service Preview by e-mail as PDF attachement
+## changed objects:
+[CustomerDetailsFactBox.pageextension.al] pageextension 80040 
+
 ## change:                                                                                                                
 //NOTE: Credit Limit
 ## details: 
 -	Added Credit Limit (LCY) to Customer Details Factbox
 ## changed objects:
-[CustomerDetailsFactBox.pageextension.al]
+[CustomerDetailsFactBox.pageextension.al] pageextension 80040 
 
 ## change:                                                                                                                
 //NOTE: Update Document Status 
